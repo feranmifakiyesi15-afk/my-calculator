@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        input, select, button {
+            padding: 10px;
+            margin: 10px;
+            font-size: 16px;
+        }
+
+        #result {
+            font-size: 20px;
+            margin-top: 20px;
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Simple Calculator</h1>
+
+    <input type="number" id="num1" placeholder="First Number">
+
+    <select id="operator">
+        <option value="+">+</option>
+        <option value="-">-</option>
+        <option value="*">*</option>
+        <option value="/">/</option>
+    </select>
+
+    <input type="number" id="num2" placeholder="Second Number">
+
+    <br>
+
+    <button onclick="calculate()">Calculate</button>
+
+    <div id="result"></div>
+
+    <script>
+        function calculate() {
+            let num1 = parseFloat(document.getElementById("num1").value);
+            let num2 = parseFloat(document.getElementById("num2").value);
+            let operator = document.getElementById("operator").value;
+            let result;
+
+            if (isNaN(num1) || isNaN(num2)) {
+                result = "Please enter valid numbers";
+            } else {
+                if (operator === "+") {
+                    result = num1 + num2;
+                } else if (operator === "-") {
+                    result = num1 - num2;
+                } else if (operator === "*") {
+                    result = num1 * num2;
+                } else if (operator === "/") {
+                    if (num2 === 0) {
+                        result = "Cannot divide by zero";
+                    } else {
+                        result = num1 / num2;
+                    }
+                }
+            }
+
+            document.getElementById("result").innerHTML = "Result: " + result;
+        }
+    </script>
+
+</body>
+</html>
